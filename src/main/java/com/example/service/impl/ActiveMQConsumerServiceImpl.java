@@ -30,6 +30,5 @@ public class ActiveMQConsumerServiceImpl implements ActiveMQConsumerService {
         MailEntry mailEntry = JSON.parseObject(message,MailEntry.class);
         this.mailService.sendSimpleMail(mailEntry);
         System.out.println("message = " + message);
-
     }
 }
