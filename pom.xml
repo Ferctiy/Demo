@@ -3,214 +3,85 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-
-    <groupId>com.project</groupId>
-    <artifactId>project-mail</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-    <name>com.project</name>
-    <description>Do Some Things About Spring Cloud</description>
+    <modules>
+        <module>project-comm</module>
+        <module>project-daomain</module>
+        <module>project-service</module>
+        <module>project-web</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-
-        <project-groupId>com.project</project-groupId>
-        <project-artifactId>project-mail</project-artifactId>
-        <project-version>1.0-SNAPSHOT</project-version>
-
-        <mail-comm-artifactId>project-mail-comm</mail-comm-artifactId>
-        <comm-version>1.0-SNAPSHOT</comm-version>
-
-        <mail-daomain-artifactId>project-mail-daomain</mail-daomain-artifactId>
-        <daomain-version>1.0-SNAPSHOT</daomain-version>
-
-        <mail-service-artifactId>project-mail-service</mail-service-artifactId>
-        <service-version>1.0-SNAPSHOT</service-version>
-
-        <mail-web-artifactId>${project-artifactId}-web</mail-web-artifactId>
-        <web-version>1.0-SNAPSHOT</web-version>
-
-        <context.version>5.1.6.RELEASE</context.version>
-        <processor.version>2.1.6.RELEASE</processor.version>
-        <devtools.version>2.1.6.RELEASE</devtools.version>
-        <test.version>2.1.6.RELEASE</test.version>
-        <mockmvc.version>2.0.3.RELEASE</mockmvc.version>
-        <redis.version>2.1.6.RELEASE</redis.version>
-        <mail.version>2.1.6.RELEASE</mail.version>
-        <zuul.version>1.4.7.RELEASE</zuul.version>
-        <lombok.version>1.18.8</lombok.version>
-        <jedis.version>2.9.0</jedis.version>
-        <fastjson.version>1.2.49</fastjson.version>
-        <activemq-all.version>5.15.9</activemq-all.version>
-        <slf4j-api.version>1.7.25</slf4j-api.version>
-        <mysql-connector-java.version>8.0.13</mysql-connector-java.version>
-
-        <spring-boot-starter-parent.version>2.0.3.RELEASE</spring-boot-starter-parent.version>
-        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot-starter-parent.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${context.version}</version>
-                <scope>compile</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
-            <groupId>${project-groupId}</groupId>
-            <artifactId>${mail-comm-artifactId}</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>${project-groupId}</groupId>
-            <artifactId>${mail-daomain-artifactId}</artifactId>
-            <version>${daomain-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project-groupId}</groupId>
-            <artifactId>${mail-service-artifactId}</artifactId>
-            <version>${service-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project-groupId}</groupId>
-            <artifactId>${mail-web-artifactId}</artifactId>
-            <version>${web-version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>${spring-boot-starter-parent.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>${spring-cloud.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${context.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>${processor.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>${devtools.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${test.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-mockmvc</artifactId>
-            <version>2.0.3.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${redis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
-            <version>${zuul.version}</version>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
-            <version>${mail.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <version>1.2.49</version>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
-            <version>${activemq-all.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>2.1.6.RELEASE</version>
+            <version>5.15.9</version>
         </dependency>
     </dependencies>
 
-    <modules>
-        <module>project-mail-daomain</module>
-        <module>project-mail-service</module>
-        <module>project-mail-web</module>
-        <module>project-mail-comm</module>
-    </modules>
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
