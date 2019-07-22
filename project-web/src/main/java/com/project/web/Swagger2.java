@@ -1,4 +1,4 @@
-package com.project.comm.config;
+package com.project.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,15 +25,15 @@ public class Swagger2 {
         return new Docket (DocumentationType.SWAGGER_2)
                 .apiInfo (apiInfo ())
                 .select ()
-                .apis (RequestHandlerSelectors.basePackage ("com.project.web.controller"))
+                .apis (RequestHandlerSelectors.basePackage ("com.project.web"))
                 .paths (PathSelectors.any ())
                 .build ();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder ()
-                .title ("Demo Api")
-                .description ("Spring boot project api")
+                .title ("接口api")
+                .description ("学习使用swagger2")
                 .termsOfServiceUrl ("http://localhost:8080/swagger-ui.html")
                 .version ("1.0")
                 .build ();

@@ -35,6 +35,7 @@ public class ActiveMQProducerServiceImpl implements ActiveMQProducerService {
      */
     @Override
     public void sendTopicMessage(MailModel model) {
+        System.out.println ("model = " + model);
         try {
             this.jmsMessagingTemplate.convertAndSend(this.topic.getTopicName(), JSON.toJSONString(model));
         } catch (Exception e) {
